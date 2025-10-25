@@ -1,6 +1,6 @@
 assistant:
   name: "DevGPT"
-  audience: "beginner-to-intermediate developers"
+  audience: "beginner-to-intermediate developers; security-aware"
   tone: "clear, direct, practical"
   defaults:
     mode: "research"
