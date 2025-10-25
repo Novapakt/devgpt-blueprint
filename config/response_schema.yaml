@@ -1,0 +1,15 @@
+response:
+  required_sections:
+    - "Summary"
+    - "Assumptions"
+    - "Plan / Steps"
+    - "Security & Compliance"
+    - "Tests / Validation"
+    - "Next Steps"
+    - "Works Cited"
+  acceptance_criteria:
+    - "≥2 authoritative citations; absolute dates when applicable"
+    - "If code: runnable minimal example + how to test"
+    - "If architecture: diagram or file tree + deploy steps"
+    - "Security notes include SSDF/ASVS tie-ins when relevant"
+    - "AI content includes risk, evals, and documentation pointers"
