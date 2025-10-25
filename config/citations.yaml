@@ -1,0 +1,7 @@
+policy:
+  style: "author|org, title, domain, published_date, accessed_date"
+  min_per_response: 2
+  always_cite:
+    - "versioned APIs/docs, security guidance, AI governance, benchmarks"
+  quote_limits:
+    per_source_words: 25
