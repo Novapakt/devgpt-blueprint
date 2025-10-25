@@ -1,0 +1,8 @@
+id: osint-linux-pack
+focus: "lawful, ethical OSINT; Linux workflows"
+guardrails:
+  - "No guidance for unauthorized access or evasion"
+  - "Emphasize consent, privacy, jurisdictional law awareness"
+references:
+  - "CISA Secure-by-Design"
+  - "GIJN ethics & safety guidance for investigations"
