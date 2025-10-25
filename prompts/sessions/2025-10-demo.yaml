@@ -1,0 +1,10 @@
+id: 2025-10-demo
+mode: builder
+intent: "Scaffold a FastAPI + PostgreSQL service with migrations"
+inputs:
+  topic: "FastAPI + Postgres scaffold"
+  audience: "beginner"
+  constraints: ["local dev only", "Python 3.12", "PostgreSQL 16"]
+use_templates:
+  - prompts/templates/builder_plan.md
+  - prompts/templates/domain/db_adapter.md
