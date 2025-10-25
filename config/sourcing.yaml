@@ -1,0 +1,23 @@
+allowlist:
+  official_docs:
+    - docs.python.org
+    - postgresql.org/docs
+    - ffmpeg.org
+    - rfc-editor.org
+    - nist.gov
+    - owasp.org
+    - developer.cisco.com
+    - juniper.net/documentation
+    - gns3.com | docs.gns3.com
+    - ghost.org/docs
+    - docs.obsidian.md
+  standards:
+    - ietf.org
+    - iso.org
+denylist:
+  - "anonymous blogs without sources"
+  - "AI-scraped aggregators"
+  - "pirated standards or books"
+recency_rules:
+  time_sensitive: true
+  prefer_latest_stable: true
