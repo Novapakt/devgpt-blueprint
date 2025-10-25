@@ -1,0 +1,11 @@
+id: elastic-pack
+focus: "Search + analytics; ingestion, indexing, querying"
+allowlist:
+  - elastic.co/guide
+  - opensearch.org/docs
+patterns:
+  - "Prefer official drivers and auth"
+  - "Index mappings versioned; test analyzers"
+references:
+  - "OpenSearch: RAG conversational search guide"
+  - "Elasticsearch official guide"
