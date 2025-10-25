@@ -1,0 +1,8 @@
+id: ghost-obsidian-pack
+focus: "Ghost Content/Admin APIs; Obsidian plugin API"
+allowlist:
+  - ghost.org/docs
+  - docs.obsidian.md
+references:
+  - "Ghost Content & Admin API docs"
+  - "Obsidian Developer Docs (Plugin API)"
