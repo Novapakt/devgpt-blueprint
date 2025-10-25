@@ -1,0 +1,260 @@
+id: security-osint-pack
+title: Cross‑Platform OSINT Pack
+version: 1.0.0
+last_updated: 2025-10-25
+maintainers: [you@example.com]
+description: >
+  A cross‑OS catalog of lawful, ethics‑first Open Source Intelligence (OSINT) frameworks,
+  tools, and workflows. Prioritizes official documentation, stable standards, and
+  platform Terms‑of‑Service compliance. Suitable for Windows, macOS, Linux, and
+  browser‑only devices.
+
+platform_support:
+  - Windows
+  - macOS
+  - Linux
+  - Browser-only
+
+guardrails:
+  - lawful_use: >
+      Use only publicly available information you have the right to access; never
+      bypass authentication/technical controls; obey each site’s Terms of Service.
+  - anti_abuse: >
+      No doxxing, harassment, targeted surveillance, or facilitating crime. DevGPT
+      must refuse requests that seek non-consensual PII or unauthorized access.
+  - passive_first: >
+      Prefer passive collection (search, archives, CT logs, RDAP). Any active probing
+      (e.g., port scanning) is out-of-scope unless user owns the assets or has explicit
+      written permission.
+  - privacy_minimization: >
+      Collect the minimum necessary personal data; advise on consent and data retention.
+  - jurisdiction_prompt: >
+      Laws vary by country/state. If guidance risks legal exposure, DevGPT should ask
+      for jurisdiction and recommend consulting local counsel or policies.
+
+taxonomy:
+  - Search & Refinement
+  - Domain/IP & Internet Infrastructure
+  - Certificates & CT Logs
+  - Social & Community (SOCMINT)
+  - Web Archives & Evidence Capture
+  - Media & File Metadata
+  - GeoOSINT (GEOINT)
+  - Breach & Exposure Intelligence
+  - Code Repos & Developer Q&A
+  - Automation & Link Analysis
+  - Verification, Ethics & Method
+
+frameworks:
+  - name: OSINT Framework
+    url: https://osintframework.com/
+    usage: "Directory to discover tools by category; always verify each tool’s ToS."
+  - name: Bellingcat Online Investigations Toolkit
+    url: https://www.bellingcat.com/resources/2024/09/24/bellingcat-online-investigations-toolkit/
+    usage: "Curated tools + methods for imagery, maps, SOCMINT, archiving, transport."
+  - name: Verification Handbook (EJC)
+    url: https://verificationhandbook.com/
+    usage: "Core verification patterns for images, video, sources, crisis contexts."
+
+tools:
+
+  search_and_refine:
+    - name: Google Advanced Search
+      type: web
+      os_support: [Browser]
+      docs: https://support.google.com/websearch/answer/2466433
+      notes: "Use operators (quotes, -, site:, filetype:). Respect robots.txt and ToS."
+    - name: Bing Advanced Search
+      type: web
+      os_support: [Browser]
+      docs: https://support.microsoft.com/en-us/topic/advanced-search-options-b92e25f1-0085-4271-bdf9-14aaea720930
+
+  domain_ip_infra:
+    - name: RDAP (ICANN Lookup)
+      type: web
+      os_support: [Browser]
+      docs: https://lookup.icann.org/
+      notes: "Standards‑based WHOIS successor for domains, IPs, ASNs."
+    - name: Sysinternals WHOIS (Windows)
+      type: cli
+      os_support: [Windows]
+      docs: https://learn.microsoft.com/en-us/sysinternals/downloads/whois
+      install: "Download whois.exe; add to PATH."
+    - name: OWASP Amass
+      type: cli
+      os_support: [Windows, macOS, Linux]
+      docs: https://owasp-amass.github.io/docs/
+      notes: "Attack-surface intelligence; use passive modes only without permission."
+    - name: theHarvester
+      type: cli
+      os_support: [Windows, macOS, Linux]
+      docs: https://github.com/laramies/theHarvester
+      notes: "Harvests OSINT from public sources; respect data-source ToS."
+
+  certificates_ct:
+    - name: Certificate Transparency (CT) standard
+      type: standard
+      os_support: [All]
+      docs: https://www.ietf.org/rfc/rfc9162.pdf
+      notes: "CT v2 protocol reference."
+    - name: crt.sh (CT search UI)
+      type: web
+      os_support: [Browser]
+      docs: https://crt.sh/
+      notes: "Searches CT logs; use only for lawful monitoring and research."
+
+  socmint:
+    - name: Reddit Search Operators
+      type: web
+      os_support: [Browser]
+      docs: https://www.reddit.com/wiki/search
+    - name: Sherlock (username enumeration)
+      type: cli
+      os_support: [Windows, macOS, Linux]
+      docs: https://github.com/sherlock-project/sherlock
+      notes: "Enumerates handles across sites; only for consented, ethical research."
+    - name: Maigret (username enumeration)
+      type: cli
+      os_support: [Windows, macOS, Linux]
+      docs: https://maigret.readthedocs.io/en/latest/
+      notes: "Similar to Sherlock; supports many sites; verify ToS."
+
+  web_archives_evidence:
+    - name: Webrecorder ArchiveWeb.page
+      type: app/extension
+      os_support: [Windows, macOS, Linux, Browser]
+      docs: https://archiveweb.page/guide
+      notes: "High‑fidelity capture to WARC/WACZ; good for chain-of-custody."
+    - name: Webrecorder ReplayWeb.page
+      type: app
+      os_support: [Windows, macOS, Linux, Browser]
+      docs: https://replayweb.page/docs/
+    - name: Wayback Machine (Internet Archive)
+      type: web
+      os_support: [Browser]
+      docs: https://web.archive.org/
+
+  media_file_metadata:
+    - name: ExifTool
+      type: cli
+      os_support: [Windows, macOS, Linux]
+      docs: https://exiftool.org/
+      notes: "Inspect/remove EXIF/XMP/IPTC; verify timezones and device data."
+    - name: FFprobe (FFmpeg)
+      type: cli
+      os_support: [Windows, macOS, Linux]
+      docs: https://ffmpeg.org/ffprobe.html
+      notes: "Container/codec metadata; JSON/INI output formats."
+    - name: MediaInfo
+      type: cli/gui
+      os_support: [Windows, macOS, Linux]
+      docs: https://mediaarea.net/en/MediaInfo/Support/SDK/Quick_Start
+
+  geo_osint:
+    - name: Overpass API (OpenStreetMap)
+      type: web/api
+      os_support: [Browser]
+      docs: https://wiki.openstreetmap.org/wiki/Overpass_API
+      notes: "Query OSM features; export GeoJSON."
+    - name: QGIS
+      type: desktop
+      os_support: [Windows, macOS, Linux]
+      docs: https://docs.qgis.org/latest/en/docs/user_manual/index.html
+
+  breach_exposure:
+    - name: Have I Been Pwned API (v3)
+      type: web/api
+      os_support: [All]
+      docs: https://haveibeenpwned.com/API/v3
+      notes: "Requires API key; use k‑anon patterns where possible; never store credentials."
+    - name: urlscan.io
+      type: web/api
+      os_support: [All]
+      docs: https://urlscan.io/docs/api/
+
+  code_repos_qa:
+    - name: GitHub Code Search
+      type: web
+      os_support: [Browser]
+      docs: https://github.com/features/code-search/
+      notes: "Use official search syntax; filter by repo/org/path/language."
+    - name: Stack Overflow Search
+      type: web
+      os_support: [Browser]
+      docs: https://stackoverflow.com/help/searching
+
+  automation_link_analysis:
+    - name: Maltego (Community/Pro)
+      type: desktop
+      os_support: [Windows, macOS, Linux]
+      docs: https://docs.maltego.com/
+      notes: "Graph link analysis; transforms; respect licenses and ToS."
+    - name: SpiderFoot
+      type: desktop/cli
+      os_support: [Windows, macOS, Linux]
+      docs: https://www.spiderfoot.net/
+
+workflows:
+  - name: Passive Infrastructure Footprint (lawful)
+    steps:
+      - Clarify scope/consent; log purpose and targets.
+      - RDAP domain/IP lookups; capture results to case file.
+      - CT search for subdomains/cert names; capture.
+      - Passive enumeration with Amass (passive modes); capture sources.
+      - Optional: urlscan.io historical scans.
+    recommended_tools: [RDAP (ICANN Lookup), crt.sh, OWASP Amass, urlscan.io]
+  - name: Evidence Capture & Preservation
+    steps:
+      - Plan capture; enable timestamping and hashing.
+      - Capture key pages with ArchiveWeb.page; export WARC/WACZ.
+      - Verify playback with ReplayWeb.page; store hashes + notes.
+    recommended_tools: [ArchiveWeb.page, ReplayWeb.page]
+  - name: Social Handle Triage (consented)
+    steps:
+      - Confirm consent/legal basis; identify usernames/aliases.
+      - Use platform search + Sherlock/Maigret; capture findings.
+    recommended_tools: [Reddit Search, Sherlock, Maigret]
+  - name: Media Authenticity Triage
+    steps:
+      - Extract metadata with ExifTool/FFprobe/MediaInfo; compare timestamps,
+        codecs, GPS; corroborate with other sources (maps/weather).
+    recommended_tools: [ExifTool, FFprobe, MediaInfo]
+  - name: Verification & Reporting
+    steps:
+      - Apply Verification Handbook checks; cite sources; include method notes,
+        timestamps, and capture hashes in the appendix.
+    recommended_tools: [Verification Handbook]
+
+allowlist_domains:
+  - support.google.com
+  - support.microsoft.com
+  - icann.org
+  - learn.microsoft.com
+  - owasp-amass.github.io
+  - github.com/laramies/theHarvester
+  - ietf.org
+  - crt.sh
+  - archiveweb.page
+  - replayweb.page
+  - web.archive.org
+  - ffmpeg.org
+  - mediaarea.net
+  - wiki.openstreetmap.org
+  - docs.qgis.org
+  - haveibeenpwned.com
+  - urlscan.io
+  - docs.maltego.com
+  - spiderfoot.net
+  - reddit.com
+
+usage_notes:
+  - "DevGPT should prefer official docs and standards first."
+  - "When user intent is unclear or potentially unlawful, pause and restate guardrails."
+  - "Always produce a short 'Method & Sources' section with citations in answers."
+
+extensibility:
+  add_tool_steps:
+    - "Add entry under the relevant taxonomy with os_support + docs."
+    - "Prefer official docs or standards; add vendor ToS link if applicable."
+    - "Test cross‑OS installation and note any caveats."
+    - "Update allowlist_domains."
