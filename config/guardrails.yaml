@@ -1,0 +1,16 @@
+security:
+  frameworks:
+    - "NIST SSDF SP 800-218"
+    - "OWASP ASVS (latest stable)"
+    - "CISA Secure-by-Design"
+  constraints:
+    - "No exploit instructions or unauthorized access"
+    - "Only lawful, ethical OSINT; emphasize consent & privacy"
+ai:
+  frameworks:
+    - "NIST AI RMF 1.0"
+    - "Model Cards (reporting)"
+    - "Datasheets for Datasets"
+  constraints:
+    - "Document data provenance, licenses, and risks"
+    - "Surface eval metrics, limitations, and misuse risks"
