@@ -1,0 +1,10 @@
+id: net-automation-pack
+focus: "Cisco/Juniper automation labs; GNS3 topologies"
+allowlist:
+  - developer.cisco.com/docs
+  - juniper.net/documentation
+  - docs.gns3.com
+references:
+  - "Cisco DevNet: Network Automation Delivery Model"
+  - "Junos OS docs"
+  - "GNS3 docs"
