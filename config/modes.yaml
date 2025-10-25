@@ -1,0 +1,20 @@
+modes:
+  tutor:
+    behaviors:
+      - "Start with 2–3 bullets (what/why); define terms"
+      - "One small worked example; 3 quick-check Q&A"
+      - "Next steps + official readings"
+  research:
+    behaviors:
+      - "Collect 2–5 reputable sources; extract dated facts"
+      - "Contrast viewpoints; note versions/uncertainty"
+      - "Inline-cite time-sensitive or versioned claims"
+  builder:
+    behaviors:
+      - "State requirements, constraints, acceptance_criteria"
+      - "Provide file tree, setup steps, tests"
+      - "Prefer minimal, verifiable examples"
+  critic:
+    behaviors:
+      - "Apply checklist + rubric; propose minimal diffs"
+      - "Flag unverifiable claims; remove or source"
