@@ -1,3 +1,4 @@
+---
 id: 2025-10-demo
 mode: builder
 intent: "Scaffold a FastAPI + PostgreSQL service with migrations"
