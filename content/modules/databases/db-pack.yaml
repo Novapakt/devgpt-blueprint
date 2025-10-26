@@ -1,11 +1,350 @@
-id: db-pack
-focus: "SQL design, migrations, Python DB-API (PEP 249)"
-allowlist:
-  - postgresql.org/docs
-  - peps.python.org/pep-0249
+---
+id: databases-db-pack
+title: Relational Databases Development Pack
+version: 1.0.0
+last_updated: 2025-10-26
+maintainers:
+  - you@example.com
+
+description: >
+  A robust, cross-platform guide for relational database development. Focuses on
+  design, migrations, secure access, reliability, performance, and reproducible
+  workflows. Targets PostgreSQL, MySQL or MariaDB, SQLite, and SQL Server, with
+  language tooling for Python, JavaScript or TypeScript, Java, and Go.
+
+platform_support:
+  - Windows
+  - macOS
+  - Linux
+  - Containers
+
+languages:
+  - Python
+  - JavaScript
+  - TypeScript
+  - Java
+  - Go
+
+guardrails:
+  - security_basics: >
+      Use least-privilege roles, rotate credentials, and store secrets in env
+      vars or secret managers. Prefer TLS in transit and encryption at rest
+      where available.
+  - pii_and_privacy: >
+      Minimize personal data, define retention policies, and log access. Avoid
+      copying production data to lower envs unless it is masked or synthesized.
+  - migrations_and_backups: >
+      All schema changes move via migrations. Backups and restores must be
+      tested. Keep a written runbook for RPO and RTO targets.
+  - lawful_and_licensed: >
+      Use licensed drivers and tools. Respect database licenses and provider
+      terms.
+
+taxonomy:
+  - Data Modeling and Normalization
+  - Schema Versioning and Migrations
+  - SQL Style and Safety
+  - Transactions and Concurrency
+  - Connections and Pooling
+  - Performance and Indexing
+  - Observability and Query Plans
+  - Durability, Backup, and Restore
+  - Replication and High Availability
+  - Testing and Fixtures
+  - Tooling and Admin
+  - Vector and Hybrid Search (optional)
+
+frameworks:
+  - name: PostgreSQL Docs
+    url: https://www.postgresql.org/docs/
+  - name: MySQL Reference Manual
+    url: https://dev.mysql.com/doc/
+  - name: SQLite Docs
+    url: https://sqlite.org/docs.html
+  - name: SQL Server Docs
+    url: https://learn.microsoft.com/sql/
+  - name: Python DB-API (PEP 249)
+    url: https://peps.python.org/pep-0249/
+  - name: SQLAlchemy 2.x
+    url: https://docs.sqlalchemy.org/en/20/
+  - name: Alembic
+    url: https://alembic.sqlalchemy.org/en/latest/
+  - name: Flyway
+    url: https://flywaydb.org/documentation
+  - name: Liquibase
+    url: https://docs.liquibase.com/
+  - name: Django ORM
+    url: https://docs.djangoproject.com/en/stable/topics/db/
+  - name: Prisma ORM
+    url: https://www.prisma.io/docs
+  - name: node-postgres (pg)
+    url: https://node-postgres.com/
+
+tools:
+
+  client_cli:
+    - name: psql
+      db: PostgreSQL
+      docs: https://www.postgresql.org/docs/current/app-psql.html
+      notes: >
+        Official PostgreSQL shell. Supports variables, \copy, and \watch.
+    - name: mysql
+      db: MySQL or MariaDB
+      docs: https://dev.mysql.com/doc/refman/8.0/en/mysql.html
+      notes: >
+        Official MySQL shell with batch mode and secure connection options.
+    - name: sqlite3
+      db: SQLite
+      docs: https://sqlite.org/cli.html
+      notes: >
+        Shell for local or embedded databases. Supports .backup and .read.
+    - name: sqlcmd
+      db: SQL Server
+      docs: https://learn.microsoft.com/sql/tools/sqlcmd-utility
+      notes: >
+        Command line for T-SQL. Supports variables and scripts.
+
+  orm_and_drivers:
+    - name: psycopg
+      lang: Python
+      docs: https://www.psycopg.org/
+      notes: >
+        Modern PostgreSQL driver for Python with asyncio support.
+    - name: SQLAlchemy
+      lang: Python
+      docs: https://docs.sqlalchemy.org/en/20/
+      notes: >
+        ORM and Core. Prefer SQLAlchemy Core for heavy SQL and clear queries.
+    - name: Django ORM
+      lang: Python
+      docs: https://docs.djangoproject.com/en/stable/topics/db/
+      notes: >
+        Integrated ORM with migrations and admin for Django projects.
+    - name: node-postgres (pg)
+      lang: JavaScript or TypeScript
+      docs: https://node-postgres.com/
+      notes: >
+        Popular PostgreSQL driver. Use parameterized queries to avoid injection.
+    - name: Prisma
+      lang: TypeScript
+      docs: https://www.prisma.io/docs
+      notes: >
+        Type-safe ORM with schema-first modeling and migrations.
+    - name: JDBC and JPA
+      lang: Java
+      docs: https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/
+      notes: >
+        JDBC is the standard driver API. Use JPA or Hibernate for ORM.
+    - name: pgx (Go)
+      lang: Go
+      docs: https://github.com/jackc/pgx
+      notes: >
+        Feature rich PostgreSQL driver and toolkit for Go.
+
+  migrations:
+    - name: Alembic
+      stack: Python or SQLAlchemy
+      docs: https://alembic.sqlalchemy.org/en/latest/
+      notes: >
+        Versioned schema migrations. Auto-generate with care and review diffs.
+    - name: Django Migrations
+      stack: Django
+      docs: https://docs.djangoproject.com/en/stable/topics/migrations/
+      notes: >
+        Built-in framework for schema changes in Django apps.
+    - name: Flyway
+      stack: Polyglot
+      docs: https://flywaydb.org/documentation
+      notes: >
+        SQL or Java-based migrations with repeatable and versioned scripts.
+    - name: Liquibase
+      stack: Polyglot
+      docs: https://docs.liquibase.com/
+      notes: >
+        XML, YAML, JSON, or SQL change sets with rollback support.
+
+  admin_gui:
+    - name: pgAdmin
+      db: PostgreSQL
+      docs: https://www.pgadmin.org/docs/
+      notes: >
+        Full-featured admin and query tool for PostgreSQL.
+    - name: DBeaver
+      db: Multi-DB
+      docs: https://dbeaver.io/docs/
+      notes: >
+        Cross-platform universal client for many databases.
+    - name: Azure Data Studio
+      db: SQL Server
+      docs: https://learn.microsoft.com/sql/azure-data-studio/
+      notes: >
+        Cross-platform editor and admin tool for SQL Server.
+
+  pooling_and_cache:
+    - name: PgBouncer
+      db: PostgreSQL
+      docs: https://www.pgbouncer.org/
+      notes: >
+        Lightweight connection pooler. Use transaction pooling for web apps.
+    - name: pgpool-II
+      db: PostgreSQL
+      docs: http://www.pgpool.net/docs/latest/en/
+      notes: >
+        Middleware for pooling, load balancing, and failover.
+
+  backup_and_restore:
+    - name: pg_dump and pg_restore
+      db: PostgreSQL
+      docs: https://www.postgresql.org/docs/current/backup.html
+      notes: >
+        Logical backups. Test restore with a throwaway database and checksum
+        results.
+    - name: mysqldump
+      db: MySQL or MariaDB
+      docs: https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html
+      notes: >
+        Logical backups for MySQL. Use --single-transaction for InnoDB.
+    - name: SQLite .backup
+      db: SQLite
+      docs: https://sqlite.org/backup.html
+      notes: >
+        Use the .backup command or VACUUM INTO for file-level copies.
+    - name: BACKUP DATABASE
+      db: SQL Server
+      docs: https://learn.microsoft.com/sql/t-sql/statements/backup-transact-sql
+      notes: >
+        Native backup and restore for SQL Server with recovery models.
+
+  observability_and_perf:
+    - name: EXPLAIN and EXPLAIN ANALYZE
+      db: PostgreSQL
+      docs: https://www.postgresql.org/docs/current/using-explain.html
+      notes: >
+        Inspect query plans. Watch for nested loops and missing indexes.
+    - name: pg_stat_statements
+      db: PostgreSQL
+      docs: https://www.postgresql.org/docs/current/pgstatstatements.html
+      notes: >
+        Track normalized query stats to find slow or frequent queries.
+    - name: EXPLAIN (MySQL)
+      db: MySQL or MariaDB
+      docs: https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
+      notes: >
+        Inspect join order and index use. Watch filtered and rows estimates.
+
+  optional_extensions:
+    - name: pgvector
+      db: PostgreSQL
+      docs: https://github.com/pgvector/pgvector
+      notes: >
+        Vector data type for similarity and hybrid search in PostgreSQL.
+    - name: TimescaleDB
+      db: PostgreSQL
+      docs: https://docs.timescale.com/
+      notes: >
+        Time-series extension with hypertables and continuous aggregates.
+
 patterns:
-  - "Start with schema + migrations"
-  - "Use transactions, parameterized queries"
-references:
-  - "PostgreSQL SQL Language (current)"
-  - "PEP 249: Python DB-API 2.0"
+  - >
+    Start with an entity and relationship diagram, even if it is rough. Write
+    a glossary and define keys and constraints early.
+  - >
+    Prefer normalized schemas first. Denormalize only for proven performance
+    or analytics use cases.
+  - >
+    Make migrations idempotent and reversible. Never edit a migration that has
+    been deployed; add a new one.
+  - >
+    Use parameterized queries and prepared statements. Never string-concatenate
+    user input.
+  - >
+    Keep transactions short and explicit. Choose isolation levels based on
+    workload needs and deadlock risk.
+  - >
+    Set a connection pool size based on CPU, active sessions, and latency.
+    Measure with load tests.
+  - >
+    Create indexes for foreign keys, filter conditions, and join keys. Avoid
+    over-indexing; measure impact.
+  - >
+    Add health checks, slow query logs, and query plan capture to your runbook.
+  - >
+    Practice restores. Automate a periodic restore test and record time and
+    steps. Verify checksums.
+  - >
+    For cloud services, confirm region, storage class, and encryption settings.
+    Keep cost and durability in mind.
+
+workflows:
+  - name: Schema-First Project Bootstrap
+    steps:
+      - >
+        Draft entities, keys, and relationships. Pick naming conventions and
+        build a glossary.
+      - >
+        Create an initial schema with migrations. Include seed data for local
+        dev.
+      - >
+        Add CI steps to run migrations against a throwaway database on every
+        pull request.
+      - >
+        Write basic CRUD queries and tests for one table to set patterns.
+    recommended_tools:
+      - Alembic
+      - Flyway
+      - Liquibase
+      - DBeaver
+
+  - name: Python Service with PostgreSQL
+    steps:
+      - >
+        Create a virtual env. Install psycopg and SQLAlchemy. Configure env
+        vars for secrets.
+      - >
+        Connect with parameterized queries. Add retries and timeouts.
+      - >
+        Add Alembic migrations. Use offline and online modes. Review generated
+        diffs.
+      - >
+        Write unit tests with fixtures and a temporary database.
+    recommended_tools:
+      - psycopg
+      - SQLAlchemy
+      - Alembic
+      - pgAdmin
+
+  - name: Backup and Restore Drill
+    steps:
+      - >
+        Schedule logical backups. Name files with date and database. Keep at
+        least three generations.
+      - >
+        Restore into a temporary database or container. Run smoke tests and
+        compare checksums.
+      - >
+        Record measured RTO and RPO. File a ticket if targets are missed.
+    recommended_tools:
+      - pg_dump and pg_restore
+      - mysqldump
+      - Azure Data Studio
+
+allowlist_domains:
+  - postgresql.org
+  - dev.mysql.com
+  - sqlite.org
+  - learn.microsoft.com
+  - peps.python.org
+  - docs.sqlalchemy.org
+  - alembic.sqlalchemy.org
+  - flywaydb.org
+  - docs.liquibase.com
+  - docs.djangoproject.com
+  - node-postgres.com
+  - psycopg.org
+  - pgbouncer.org
+  - pgpool.net
+  - pgadmin.org
+  - dbeaver.io
+  - jetbrains.com
+  - timescale.com
+  - github.com
