@@ -1,0 +1,242 @@
+---
+id: opensource-obsidian-pack
+title: Obsidian Research Assistant (Cross‑Platform)
+version: 1.0.0
+last_updated: 2025-10-26
+maintainers: [you@example.com]
+description: >
+  A robust, well‑sourced capability pack for using Obsidian as a research assistant.
+  Covers capture (official Web Clipper, Readwise), citations (Zotero), query (Bases & Dataview),
+  templating (Templater, QuickAdd), search (Omnisearch + OCR), visualization (Canvas, Excalidraw),
+  export/publish (Pandoc, Publish), versioning (Git), and plugin development (API).
+
+platform_support: [Windows, macOS, Linux, iOS, Android]
+
+guardrails:
+  - plugin_security: >
+      Community plugins run third‑party code with access to your files. Enable only what you trust.
+      Prefer official/core features; review plugin docs and code. Use Restricted Mode when unsure.
+  - privacy_minimization: >
+      Avoid storing secrets or personal data in plain text notes/templates. Prefer local/offline workflows
+      and selective publishing. Evaluate each plugin/service ToS for data handling.
+  - mobile_variance: >
+      Many plugins work on mobile but not all; verify per‑plugin mobile support before relying on them.
+  - licensing_note: >
+      Obsidian core is user‑supported software with optional paid add‑ons; community plugins are typically
+      open‑source. Check each plugin license and repo.
+
+taxonomy:
+  - Capture & Ingest
+  - Literature, Citations & Bibliography
+  - Query & Views
+  - Templates & Automation
+  - Search & Indexing
+  - Visualization & Whiteboarding
+  - Export & Publishing
+  - Versioning & Sync
+  - Developer API & Plugin Dev
+
+frameworks:
+  - name: Obsidian Help (official user docs)
+    url: https://help.obsidian.md/
+  - name: Obsidian Developer Docs (official plugin/theme dev)
+    url: https://docs.obsidian.md/Home
+  - name: Obsidian Plugin Security
+    url: https://help.obsidian.md/plugin-security
+
+tools:
+
+  capture_ingest:
+    - name: Obsidian Web Clipper (official)
+      type: browser_extension
+      os_support: [Chrome/Chromium, Firefox, Safari, Edge, iOS, Android]
+      docs: https://help.obsidian.md/web-clipper
+      notes: "Highlight & capture web pages directly to your vault; requires Obsidian 1.7.2+. Includes templates and structured extraction."
+    - name: Readwise Official
+      type: community_plugin
+      os_support: [Windows, macOS, Linux, iOS, Android]
+      docs: https://github.com/readwiseio/obsidian-readwise
+      notes: "Sync reading highlights into Obsidian; paid Readwise service required."
+    - name: MarkDownload (alternative OSS clipper)
+      type: browser_extension
+      os_support: [Chrome/Chromium, Firefox, Edge]
+      docs: https://github.com/deathau/markdownload
+      notes: "General Markdown clipper; not Obsidian‑specific, works well for offline archiving."
+
+  literature_citations:
+    - name: Zotero Integration (Obsidian ↔ Zotero)
+      type: community_plugin
+      os_support: [Windows, macOS, Linux]
+      docs: https://github.com/mgmeyers/obsidian-zotero-integration
+      notes: "Import citations, bibliographies, notes, and PDF annotations from Zotero."
+    - name: Citations (bib/CSL file based)
+      type: community_plugin
+      os_support: [Windows, macOS, Linux]
+      docs: https://github.com/hans/obsidian-citation-plugin
+      notes: "Insert citekeys and literature notes from a local .bib or CSL‑JSON file."
+    - name: Better BibTeX for Zotero (BBT)
+      type: zotero_addon
+      os_support: [Windows, macOS, Linux]
+      docs: https://retorque.re/zotero-better-bibtex/
+      notes: "Deterministic citekeys, CSL/JSON/BibLaTeX exports used by Citations & Pandoc."
+
+  query_views:
+    - name: Bases (core plugin)
+      type: core_plugin
+      os_support: [Windows, macOS, Linux, iOS, Android]
+      docs: https://help.obsidian.md/bases
+      notes: "Database‑like views over Properties: tables/cards, filters, functions."
+    - name: Dataview
+      type: community_plugin
+      os_support: [Windows, macOS, Linux, iOS, Android]
+      docs: https://github.com/blacksmithgu/obsidian-dataview
+      notes: "Query vault as data (inline or code blocks); JS API; read‑only by design."
+
+  templates_automation:
+    - name: Templater
+      type: community_plugin
+      os_support: [Windows, macOS, Linux, iOS, Android]
+      docs: https://silentvoid13.github.io/Templater/introduction.html
+      notes: "Template language + JS execution to automate note scaffolds."
+    - name: QuickAdd
+      type: community_plugin
+      os_support: [Windows, macOS, Linux]
+      docs: https://quickadd.obsidian.guide/docs/
+      notes: "Capture prompts, macros, multi‑choice actions; integrates with Templater."
+
+  search_indexing:
+    - name: Omnisearch
+      type: community_plugin
+      os_support: [Windows, macOS, Linux]
+      docs: https://publish.obsidian.md/omnisearch/Index
+      notes: "Fast, ranked search across notes; complements core search."
+    - name: Text Extractor (OCR/PDF text)
+      type: community_plugin
+      os_support: [Windows, macOS, Linux]
+      docs: https://github.com/scambier/obsidian-text-extractor
+      notes: "Extracts text from images/PDFs; useful to surface content to search."
+
+  visualization_whiteboarding:
+    - name: Canvas (core plugin)
+      type: core_plugin
+      os_support: [Windows, macOS, Linux]
+      docs: https://help.obsidian.md/Plugins/Canvas
+      notes: "Spatial boards linking notes, files, and web pages."
+    - name: Excalidraw (plugin)
+      type: community_plugin
+      os_support: [Windows, macOS, Linux, iOS, Android]
+      docs: https://github.com/zsviczian/obsidian-excalidraw-plugin
+      notes: "Sketches/diagrams inside Obsidian; link drawings ↔ notes."
+
+  export_publish:
+    - name: Pandoc (plugin)
+      type: community_plugin
+      os_support: [Windows, macOS, Linux]
+      docs: https://github.com/OliverBalfour/obsidian-pandoc
+      notes: "Convert Markdown to PDF/DOCX/HTML/LaTeX/etc. via Pandoc; install Pandoc separately."
+    - name: Obsidian Publish (service)
+      type: paid_service
+      os_support: [Windows, macOS, Linux, iOS, Android]
+      docs: https://help.obsidian.md/publish
+      notes: "Publish selected notes with search, custom domains, and styling controls."
+
+  versioning_sync:
+    - name: Obsidian Git
+      type: community_plugin
+      os_support: [Windows, macOS, Linux]  # mobile setup varies and may be unstable
+      docs: https://publish.obsidian.md/git-doc/Start%2Bhere
+      notes: "Commit/pull/push from within Obsidian; read mobile caveats in docs."
+
+  developer_api:
+    - name: Obsidian Plugin API
+      type: developer_docs
+      os_support: [All]
+      docs: https://docs.obsidian.md/Home
+      notes: "Official Plugin API & dev guides."
+    - name: Obsidian API Type Definitions
+      type: github_repo
+      os_support: [All]
+      docs: https://github.com/obsidianmd/obsidian-api
+      notes: "Up‑to‑date TypeScript types for the Plugin API."
+
+workflows:
+  - name: Literature Review (Zotero → Obsidian → Queries)
+    steps:
+      - Capture sources: use Web Clipper for web, Zotero for papers/books.
+      - In Zotero, enable Better BibTeX; export/select CSL‑JSON or BibLaTeX for Obsidian use.
+      - In Obsidian, use Zotero Integration to import citations/annotations into literature notes.
+      - Use Citations plugin to insert citekeys while writing.
+      - Build a reading list in Bases/Dataview filtering by status/tags/dates.
+    recommended_tools: [Obsidian Web Clipper, Zotero Integration, Citations, Better BibTeX, Bases, Dataview]
+
+  - name: Capture & Triage (Browser → Vault with templates)
+    steps:
+      - Install Obsidian Web Clipper; configure target vault/folder and clipping template.
+      - Clip highlights/metadata; tag with project and source type.
+      - Optional: Sync Readwise highlights into an inbox folder; normalize properties via Templater.
+    recommended_tools: [Obsidian Web Clipper, Readwise Official, Templater, QuickAdd]
+
+  - name: Research Synthesis Dashboard (Properties → Bases/Dataview)
+    steps:
+      - Define Properties (e.g., source_type, author, year, status, topic).
+      - Build a Base: table/card views with filters and formulas.
+      - Add Dataview queries for roll‑ups (e.g., unread count by topic; latest notes by date).
+    recommended_tools: [Properties, Bases, Dataview]
+
+  - name: Export & Cite (Manuscript/Report)
+    steps:
+      - Ensure bibliography file (BBT export) is up‑to‑date.
+      - Use Pandoc plugin to export to PDF/DOCX/HTML; pass CSL style if needed.
+      - Verify references and figure links; fix any formatting issues noted by Pandoc.
+    recommended_tools: [Pandoc plugin, Better BibTeX, Citations]
+
+  - name: Search & Retrieval (Vault‑wide, including PDFs/Images)
+    steps:
+      - Enable Text Extractor to OCR images/PDFs; let it index.
+      - Use Omnisearch for fast ranked results; cross‑check with core Search when needed.
+    recommended_tools: [Text Extractor, Omnisearch]
+
+  - name: Publish/Share (Selective)
+    steps:
+      - Mark publishable notes; exclude private folders.
+      - Configure Obsidian Publish (site, theme, custom domain).
+      - Review Publish limitations and SEO guidance; deploy.
+    recommended_tools: [Obsidian Publish]
+
+usage_notes:
+  - "Prefer official Help/Developer docs for features and syntax; cite versions/dates."
+  - "State plugin versions when instructions depend on recent features."
+  - "Mobile: check each plugin’s docs; some features are desktop‑only."
+  - "When exporting with Pandoc, install Pandoc on the OS and set its path in plugin settings."
+
+allowlist_domains:
+  - help.obsidian.md
+  - docs.obsidian.md
+  - obsidian.md
+  - publish.obsidian.md
+  - github.com/obsidianmd
+  - github.com/blacksmithgu/obsidian-dataview
+  - silentvoid13.github.io
+  - github.com/SilentVoid13/Templater
+  - quickadd.obsidian.guide
+  - github.com/chhoumann/quickadd
+  - publish.obsidian.md/tasks
+  - github.com/obsidian-tasks-group/obsidian-tasks
+  - github.com/zsviczian/obsidian-excalidraw-plugin
+  - publish.obsidian.md/omnisearch
+  - github.com/scambier/obsidian-omnisearch
+  - github.com/scambier/obsidian-text-extractor
+  - github.com/readwiseio/obsidian-readwise
+  - retorque.re
+  - github.com/retorquere/zotero-better-bibtex
+  - github.com/mgmeyers/obsidian-zotero-integration
+  - github.com/hans/obsidian-citation-plugin
+  - github.com/OliverBalfour/obsidian-pandoc
+  - publish.obsidian.md/git-doc
+
+extensibility:
+  add_tool_steps:
+    - "Add plugin/extension under the relevant taxonomy with os_support, docs, and notes."
+    - "Prefer official docs or the plugin’s README/guide; include mobile compatibility note."
+    - "Update allowlist_domains and workflows if this tool adds a new capability."
+
