@@ -1,14 +1,4 @@
-# Create a corrected YAML for content/modules/security/osint-pack.yaml
-# - Adds the required document-start marker '---'
-# - Wraps long strings using folded scalars so every physical line is <= 80 chars
-# - Keeps cross-platform scope and ethics guardrails
-# - Verifies max line length at the end
-
-import os, textwrap, sys, hashlib
-
-os.makedirs("/mnt/data/content/modules/security", exist_ok=True)
-
-yaml_content = """---
+---
 id: security-osint-pack
 title: Cross-Platform OSINT Pack
 version: 1.0.0
@@ -329,31 +319,5 @@ extensibility:
       Test cross-OS installation and note any caveats.
     - >
       Update allowlist_domains accordingly.
-"""
-
-target_path = "/mnt/data/content/modules/security/osint-pack.yaml"
-with open(target_path, "w", encoding="utf-8") as f:
-    f.write(yaml_content)
-
-# Verify maximum line length
-max_len = 0
-bad_lines = []
-with open(target_path, "r", encoding="utf-8") as f:
-    for i, line in enumerate(f, 1):
-        length = len(line.rstrip("\n"))
-        if length > max_len:
-            max_len = length
-        if length > 80:
-            bad_lines.append((i, length, line))
-
-print("Wrote:", target_path)
-print("Max line length:", max_len)
-print("Lines > 80 chars:", len(bad_lines))
-if bad_lines:
-    print("Example offending lines (first 5):")
-    for i, (ln, length, content) in enumerate(bad_lines[:5], 1):
-        print(f"{i}) line {ln}: {length} chars -> {content[:100]!r}")
-
-# Print a short SHA256 for integrity
 sha = hashlib.sha256(yaml_content.encode("utf-8")).hexdigest()
 print("SHA256:", sha)
