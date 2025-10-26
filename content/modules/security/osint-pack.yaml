@@ -319,5 +319,3 @@ extensibility:
       Test cross-OS installation and note any caveats.
     - >
       Update allowlist_domains accordingly.
-sha = hashlib.sha256(yaml_content.encode("utf-8")).hexdigest()
-print("SHA256", sha)
