@@ -18,7 +18,7 @@ platform_support:
 
 guardrails:
   - lawful_use: >
-      Use only publicly available information you have the right to access; never
+      Use only publicly available information; never
       bypass authentication or technical controls; obey each site's Terms of
       Service.
   - anti_abuse: >
@@ -57,7 +57,7 @@ frameworks:
       Directory to discover tools by category; always verify each tool's Terms
       of Service.
   - name: Bellingcat Online Investigations Toolkit
-    url: https://www.bellingcat.com/resources/2024/09/24/bellingcat-online-investigations-toolkit/
+    url: https://bellingcat.gitbook.io/toolkit
     usage: >
       Curated tools and methods for imagery, maps, SOCMINT, archiving, and
       transport research.
@@ -77,10 +77,10 @@ tools:
       notes: >
         Use operators (quotes, minus, site:, filetype:). Respect robots.txt and
         Terms of Service.
-    - name: Bing Advanced Search
+    - name: DuckDuckGo Advanced Search
       type: web
       os_support: [Browser]
-      docs: https://support.microsoft.com/en-us/topic/advanced-search-options-b92e25f1-0085-4271-bdf9-14aaea720930
+      docs: https://duckduckgo.com/duckduckgo-help-pages/
 
   domain_ip_infra:
     - name: RDAP (ICANN Lookup)
@@ -320,4 +320,4 @@ extensibility:
     - >
       Update allowlist_domains accordingly.
 sha = hashlib.sha256(yaml_content.encode("utf-8")).hexdigest()
-print("SHA256:", sha)
+print("SHA256", sha)
