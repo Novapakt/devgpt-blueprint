@@ -1,15 +1,25 @@
----
-id: security-osint-pack
-title: Cross‑Platform OSINT Pack
-version: 1.0.0
-last_updated: 2025-10-25
-maintainers: [you@example.com]
-description: >
-  A cross‑OS catalog of lawful, ethics‑first Open Source Intelligence (OSINT) frameworks,
-  tools, and workflows. Prioritizes official documentation, stable standards, and
-  platform Terms‑of‑Service compliance. Suitable for Windows, macOS, Linux, and
-  browser‑only devices.
+# Create a corrected YAML for content/modules/security/osint-pack.yaml
+# - Adds the required document-start marker '---'
+# - Wraps long strings using folded scalars so every physical line is <= 80 chars
+# - Keeps cross-platform scope and ethics guardrails
+# - Verifies max line length at the end
 
+import os, textwrap, sys, hashlib
+
+os.makedirs("/mnt/data/content/modules/security", exist_ok=True)
+
+yaml_content = """---
+id: security-osint-pack
+title: Cross-Platform OSINT Pack
+version: 1.0.0
+last_updated: 2025-10-26
+maintainers:
+  - you@example.com
+description: >
+  A cross-OS catalog of lawful, ethics-first Open Source Intelligence (OSINT)
+  frameworks, tools, and workflows. Prioritizes official documentation, stable
+  standards, and platform Terms-of-Service compliance. Suitable for Windows,
+  macOS, Linux, and browser-only devices.
 platform_support:
   - Windows
   - macOS
@@ -19,19 +29,23 @@ platform_support:
 guardrails:
   - lawful_use: >
       Use only publicly available information you have the right to access; never
-      bypass authentication/technical controls; obey each site’s Terms of Service.
+      bypass authentication or technical controls; obey each site's Terms of
+      Service.
   - anti_abuse: >
-      No doxxing, harassment, targeted surveillance, or facilitating crime. DevGPT
-      must refuse requests that seek non-consensual PII or unauthorized access.
+      No doxxing, harassment, targeted surveillance, or facilitating crime.
+      DevGPT must refuse requests that seek non-consensual PII or unauthorized
+      access.
   - passive_first: >
-      Prefer passive collection (search, archives, CT logs, RDAP). Any active probing
-      (e.g., port scanning) is out-of-scope unless user owns the assets or has explicit
-      written permission.
+      Prefer passive collection (search, archives, CT logs, RDAP). Any active
+      probing (for example, port scanning) is out of scope unless the user owns
+      the assets or has explicit written permission.
   - privacy_minimization: >
-      Collect the minimum necessary personal data; advise on consent and data retention.
+      Collect the minimum necessary personal data; advise on consent and data
+      retention.
   - jurisdiction_prompt: >
-      Laws vary by country/state. If guidance risks legal exposure, DevGPT should ask
-      for jurisdiction and recommend consulting local counsel or policies.
+      Laws vary by country and state. If guidance risks legal exposure, DevGPT
+      should ask for jurisdiction and recommend consulting local counsel or
+      policies.
 
 taxonomy:
   - Search & Refinement
@@ -49,13 +63,19 @@ taxonomy:
 frameworks:
   - name: OSINT Framework
     url: https://osintframework.com/
-    usage: "Directory to discover tools by category; always verify each tool’s ToS."
+    usage: >
+      Directory to discover tools by category; always verify each tool's Terms
+      of Service.
   - name: Bellingcat Online Investigations Toolkit
     url: https://www.bellingcat.com/resources/2024/09/24/bellingcat-online-investigations-toolkit/
-    usage: "Curated tools + methods for imagery, maps, SOCMINT, archiving, transport."
+    usage: >
+      Curated tools and methods for imagery, maps, SOCMINT, archiving, and
+      transport research.
   - name: Verification Handbook (EJC)
     url: https://verificationhandbook.com/
-    usage: "Core verification patterns for images, video, sources, crisis contexts."
+    usage: >
+      Core verification patterns for images, video, sources, and crisis
+      contexts.
 
 tools:
 
@@ -64,7 +84,9 @@ tools:
       type: web
       os_support: [Browser]
       docs: https://support.google.com/websearch/answer/2466433
-      notes: "Use operators (quotes, -, site:, filetype:). Respect robots.txt and ToS."
+      notes: >
+        Use operators (quotes, minus, site:, filetype:). Respect robots.txt and
+        Terms of Service.
     - name: Bing Advanced Search
       type: web
       os_support: [Browser]
@@ -75,34 +97,41 @@ tools:
       type: web
       os_support: [Browser]
       docs: https://lookup.icann.org/
-      notes: "Standards‑based WHOIS successor for domains, IPs, ASNs."
+      notes: >
+        Standards-based successor to WHOIS for domains, IPs, and ASNs.
     - name: Sysinternals WHOIS (Windows)
       type: cli
       os_support: [Windows]
       docs: https://learn.microsoft.com/en-us/sysinternals/downloads/whois
-      install: "Download whois.exe; add to PATH."
+      install: >
+        Download whois.exe and add it to PATH.
     - name: OWASP Amass
       type: cli
       os_support: [Windows, macOS, Linux]
       docs: https://owasp-amass.github.io/docs/
-      notes: "Attack-surface intelligence; use passive modes only without permission."
+      notes: >
+        Attack-surface intelligence; use passive modes only without permission.
     - name: theHarvester
       type: cli
       os_support: [Windows, macOS, Linux]
       docs: https://github.com/laramies/theHarvester
-      notes: "Harvests OSINT from public sources; respect data-source ToS."
+      notes: >
+        Harvests OSINT from public sources; respect each data source's Terms of
+        Service.
 
   certificates_ct:
     - name: Certificate Transparency (CT) standard
       type: standard
       os_support: [All]
       docs: https://www.ietf.org/rfc/rfc9162.pdf
-      notes: "CT v2 protocol reference."
+      notes: >
+        CT v2 protocol reference.
     - name: crt.sh (CT search UI)
       type: web
       os_support: [Browser]
       docs: https://crt.sh/
-      notes: "Searches CT logs; use only for lawful monitoring and research."
+      notes: >
+        Search CT logs; use only for lawful monitoring and research.
 
   socmint:
     - name: Reddit Search Operators
@@ -113,23 +142,29 @@ tools:
       type: cli
       os_support: [Windows, macOS, Linux]
       docs: https://github.com/sherlock-project/sherlock
-      notes: "Enumerates handles across sites; only for consented, ethical research."
+      notes: >
+        Enumerates handles across sites; only for consented, ethical research.
     - name: Maigret (username enumeration)
       type: cli
       os_support: [Windows, macOS, Linux]
       docs: https://maigret.readthedocs.io/en/latest/
-      notes: "Similar to Sherlock; supports many sites; verify ToS."
+      notes: >
+        Similar to Sherlock; supports many sites; verify each site's Terms of
+        Service.
 
   web_archives_evidence:
-    - name: Webrecorder ArchiveWeb.page
-      type: app/extension
+    - name: ArchiveWeb.page (Webrecorder)
+      type: app_or_extension
       os_support: [Windows, macOS, Linux, Browser]
       docs: https://archiveweb.page/guide
-      notes: "High‑fidelity capture to WARC/WACZ; good for chain-of-custody."
-    - name: Webrecorder ReplayWeb.page
+      notes: >
+        High-fidelity capture to WARC or WACZ; good for chain-of-custody.
+    - name: ReplayWeb.page (Webrecorder)
       type: app
       os_support: [Windows, macOS, Linux, Browser]
       docs: https://replayweb.page/docs/
+      notes: >
+        Local replay of web archives; validate captures.
     - name: Wayback Machine (Internet Archive)
       type: web
       os_support: [Browser]
@@ -140,23 +175,26 @@ tools:
       type: cli
       os_support: [Windows, macOS, Linux]
       docs: https://exiftool.org/
-      notes: "Inspect/remove EXIF/XMP/IPTC; verify timezones and device data."
+      notes: >
+        Inspect or remove EXIF, XMP, and IPTC; verify timezones and device data.
     - name: FFprobe (FFmpeg)
       type: cli
       os_support: [Windows, macOS, Linux]
       docs: https://ffmpeg.org/ffprobe.html
-      notes: "Container/codec metadata; JSON/INI output formats."
+      notes: >
+        Container and codec metadata; supports JSON and INI output formats.
     - name: MediaInfo
-      type: cli/gui
+      type: cli_or_gui
       os_support: [Windows, macOS, Linux]
       docs: https://mediaarea.net/en/MediaInfo/Support/SDK/Quick_Start
 
   geo_osint:
     - name: Overpass API (OpenStreetMap)
-      type: web/api
+      type: web_or_api
       os_support: [Browser]
       docs: https://wiki.openstreetmap.org/wiki/Overpass_API
-      notes: "Query OSM features; export GeoJSON."
+      notes: >
+        Query OSM features and export GeoJSON.
     - name: QGIS
       type: desktop
       os_support: [Windows, macOS, Linux]
@@ -164,12 +202,13 @@ tools:
 
   breach_exposure:
     - name: Have I Been Pwned API (v3)
-      type: web/api
+      type: web_or_api
       os_support: [All]
       docs: https://haveibeenpwned.com/API/v3
-      notes: "Requires API key; use k‑anon patterns where possible; never store credentials."
+      notes: >
+        Requires API key; prefer k-anonymity patterns; never store credentials.
     - name: urlscan.io
-      type: web/api
+      type: web_or_api
       os_support: [All]
       docs: https://urlscan.io/docs/api/
 
@@ -178,53 +217,75 @@ tools:
       type: web
       os_support: [Browser]
       docs: https://github.com/features/code-search/
-      notes: "Use official search syntax; filter by repo/org/path/language."
+      notes: >
+        Use official search syntax; filter by repository, organization, path, or
+        language.
     - name: Stack Overflow Search
       type: web
       os_support: [Browser]
       docs: https://stackoverflow.com/help/searching
 
   automation_link_analysis:
-    - name: Maltego (Community/Pro)
+    - name: Maltego (Community or Pro)
       type: desktop
       os_support: [Windows, macOS, Linux]
       docs: https://docs.maltego.com/
-      notes: "Graph link analysis; transforms; respect licenses and ToS."
+      notes: >
+        Graph link analysis and transforms; respect licenses and Terms of
+        Service.
     - name: SpiderFoot
-      type: desktop/cli
+      type: desktop_or_cli
       os_support: [Windows, macOS, Linux]
       docs: https://www.spiderfoot.net/
 
 workflows:
   - name: Passive Infrastructure Footprint (lawful)
     steps:
-      - Clarify scope/consent; log purpose and targets.
-      - RDAP domain/IP lookups; capture results to case file.
-      - CT search for subdomains/cert names; capture.
-      - Passive enumeration with Amass (passive modes); capture sources.
+      - Clarify scope and consent; log purpose and targets.
+      - RDAP domain or IP lookups; capture results to case file.
+      - CT search for subdomains and certificate names; capture findings.
+      - Passive enumeration with Amass (passive modes only); capture sources.
       - Optional: urlscan.io historical scans.
-    recommended_tools: [RDAP (ICANN Lookup), crt.sh, OWASP Amass, urlscan.io]
-  - name: Evidence Capture & Preservation
+    recommended_tools:
+      - RDAP (ICANN Lookup)
+      - crt.sh
+      - OWASP Amass
+      - urlscan.io
+
+  - name: Evidence Capture and Preservation
     steps:
       - Plan capture; enable timestamping and hashing.
-      - Capture key pages with ArchiveWeb.page; export WARC/WACZ.
-      - Verify playback with ReplayWeb.page; store hashes + notes.
-    recommended_tools: [ArchiveWeb.page, ReplayWeb.page]
+      - Capture key pages with ArchiveWeb.page; export WARC or WACZ.
+      - Verify playback with ReplayWeb.page; store hashes and notes.
+    recommended_tools:
+      - ArchiveWeb.page (Webrecorder)
+      - ReplayWeb.page (Webrecorder)
+
   - name: Social Handle Triage (consented)
     steps:
-      - Confirm consent/legal basis; identify usernames/aliases.
-      - Use platform search + Sherlock/Maigret; capture findings.
-    recommended_tools: [Reddit Search, Sherlock, Maigret]
+      - Confirm consent and legal basis; identify usernames and aliases.
+      - Use platform search with Sherlock or Maigret; capture findings.
+    recommended_tools:
+      - Reddit Search Operators
+      - Sherlock (username enumeration)
+      - Maigret (username enumeration)
+
   - name: Media Authenticity Triage
     steps:
-      - Extract metadata with ExifTool/FFprobe/MediaInfo; compare timestamps,
-        codecs, GPS; corroborate with other sources (maps/weather).
-    recommended_tools: [ExifTool, FFprobe, MediaInfo]
-  - name: Verification & Reporting
+      - Extract metadata with ExifTool, FFprobe, or MediaInfo; compare times,
+        codecs, GPS, and device data; corroborate with other sources (maps or
+        weather).
+    recommended_tools:
+      - ExifTool
+      - FFprobe (FFmpeg)
+      - MediaInfo
+
+  - name: Verification and Reporting
     steps:
       - Apply Verification Handbook checks; cite sources; include method notes,
         timestamps, and capture hashes in the appendix.
-    recommended_tools: [Verification Handbook]
+    recommended_tools:
+      - Verification Handbook (EJC)
 
 allowlist_domains:
   - support.google.com
@@ -249,13 +310,50 @@ allowlist_domains:
   - reddit.com
 
 usage_notes:
-  - "DevGPT should prefer official docs and standards first."
-  - "When user intent is unclear or potentially unlawful, pause and restate guardrails."
-  - "Always produce a short 'Method & Sources' section with citations in answers."
+  - >
+    DevGPT should prefer official docs and standards first.
+  - >
+    When user intent is unclear or potentially unlawful, pause and restate
+    guardrails.
+  - >
+    Always produce a short "Method & Sources" section with citations in answers.
 
 extensibility:
   add_tool_steps:
-    - "Add entry under the relevant taxonomy with os_support + docs."
-    - "Prefer official docs or standards; add vendor ToS link if applicable."
-    - "Test cross‑OS installation and note any caveats."
-    - "Update allowlist_domains."
+    - >
+      Add entry under the relevant taxonomy with os_support and docs.
+    - >
+      Prefer official docs or standards; add vendor Terms of Service link if
+      applicable.
+    - >
+      Test cross-OS installation and note any caveats.
+    - >
+      Update allowlist_domains accordingly.
+"""
+
+target_path = "/mnt/data/content/modules/security/osint-pack.yaml"
+with open(target_path, "w", encoding="utf-8") as f:
+    f.write(yaml_content)
+
+# Verify maximum line length
+max_len = 0
+bad_lines = []
+with open(target_path, "r", encoding="utf-8") as f:
+    for i, line in enumerate(f, 1):
+        length = len(line.rstrip("\n"))
+        if length > max_len:
+            max_len = length
+        if length > 80:
+            bad_lines.append((i, length, line))
+
+print("Wrote:", target_path)
+print("Max line length:", max_len)
+print("Lines > 80 chars:", len(bad_lines))
+if bad_lines:
+    print("Example offending lines (first 5):")
+    for i, (ln, length, content) in enumerate(bad_lines[:5], 1):
+        print(f"{i}) line {ln}: {length} chars -> {content[:100]!r}")
+
+# Print a short SHA256 for integrity
+sha = hashlib.sha256(yaml_content.encode("utf-8")).hexdigest()
+print("SHA256:", sha)
