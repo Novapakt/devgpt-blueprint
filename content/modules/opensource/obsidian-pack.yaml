@@ -412,5 +412,3 @@ extensibility:
       compatibility notes.
     - >
       Update allowlist_domains and workflows if the tool adds a new capability.
-
-
